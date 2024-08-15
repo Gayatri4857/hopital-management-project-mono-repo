@@ -1,4 +1,4 @@
-# Use an official Ruby image as a parent image
+# Use an official Ruby image as a parent images
 FROM ruby:2.7
 
 # Install JDK and Maven
@@ -14,4 +14,4 @@ RUN gem install license_finder
 WORKDIR /scan
 
 # Command to run license_finder
-ENTRYPOINT ["license_finder"]
+ENTRYPOINT ["license_finder"]   
