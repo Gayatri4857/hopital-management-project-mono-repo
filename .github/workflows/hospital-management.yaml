@@ -37,15 +37,6 @@ jobs:
         run: 
           docker push ${{secrets.DOCKER_REGISTRY_USER }}/case-service:latest
 
-      - name: Build Docker Image for patient-service
-        run:
-          docker build -t ${{ secrets.DOCKER_REGISTRY_USER }}/patient-service:latest -f dockerfile .
-        working-directory: hospital-management/patient-service
-
-      - name: Push Docker Image for patient-service
-        run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/patient-service:latest
-
       - name: Build Docker Image for directory-service
         run: 
           docker build -t ${{ secrets.DOCKER_REGISTRY_USER}}/directory-service:latest -f dockerfile .
@@ -63,3 +54,12 @@ jobs:
       - name: Push Docker Image for api-gateway
         run: 
           docker push ${{secrets.DOCKER_REGISTRY_USER}}/api-gateway:latest
+
+      - name: Build Docker Image for patient-service
+        run:
+          docker build -t ${{ secrets.DOCKER_REGISTRY_USER }}/patient-service:latest -f dockerfile .
+        working-directory: hospital-management/patient-service
+
+      - name: Push Docker Image for patient-service
+        run: 
+          docker push ${{secrets.DOCKER_REGISTRY_USER}}/patient-service:latest
