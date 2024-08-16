@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 
       
       - name: Build open-jdk image
         run: docker build -t ${{ secrets.DOCKER_REGISTRY_USER }}/open-jdk:latest -f dev-sec-opps/base-images/openjdk.dockerfile .
