@@ -3,7 +3,7 @@ name: Build and Push Docker Images
 on:
   push:
     paths:
-      - hospital-management/**
+      - hospital-management/api-gateway/**
 
 jobs:
   build-and-push:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Docker Image for api-gateway
         run: 
-          docker build -t ${{ secrets.DOCKER_REGISTRY_USER}}/api-gateway:latest -f hospital-management/api-gateway/dockerfile
+          docker build -t ${{ secrets.DOCKER_REGISTRY_USER}}/api-gateway:latest -f dockerfile .
         working-directory: hospital-management/api-gateway
 
       - name: Push Docker Image for api-gateway
