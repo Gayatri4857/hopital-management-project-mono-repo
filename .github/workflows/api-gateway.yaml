@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Docker Image for api-gateway
         run: 
-          docker build -t ${{ secrets.DOCKER_REGISTRY_USER}}/api-gateway:latest -f dockerfile .
+          docker build -t ${{ secrets.DOCKER_REGISTRY_USER}}/api-gateway:latest -f hospital-management/api-gateway/dockerfile .
         working-directory: hospital-management/api-gateway
 
       - name: Push Docker Image for api-gateway
