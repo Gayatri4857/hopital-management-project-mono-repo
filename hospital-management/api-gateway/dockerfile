@@ -4,7 +4,7 @@ FROM gayatri589/open-jdk
 WORKDIR /app
  
 # Copy the application JAR file
-COPY . /app 
+COPY . /app  
 
 # Start the application 
 CMD ["java", "-jar", "/app/api-gateway.jar"]
