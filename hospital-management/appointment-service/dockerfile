@@ -1,11 +1,12 @@
-# Use a base image with Java 11
-FROM openjdk:11-jre-slim
+# Use a base image with the required runtime environment
+# Use a base image with JDK
+FROM gayatri589/open-jdk 
 
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
+# Set the working directory inside the container
+WORKDIR /app
+ 
 # Copy the application JAR file
-COPY target/appointment_service-0.0.1-SNAPSHOT.jar app.jar
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+COPY . /app
+ 
+# Start the application 
+CMD ["java", "-jar", "/app/appointment-service.jar"]
