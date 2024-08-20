@@ -100,27 +100,17 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.openjfx</groupId>
-				<artifactId>javafx-maven-plugin</artifactId>
-				<version>0.0.8</version>
-				<configuration>
-					<mainClass>hospital_management_main.HospitalManagementMain</mainClass>
-				</configuration>
+				<groupId>com.spotify.fmt</groupId>
+				<artifactId>fmt-maven-plugin</artifactId>
+				<version>2.23</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<release>16</release> <!-- Update this to your desired Java
-					version, for example, 16 -->
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -136,6 +126,43 @@
 						<name>docker.io/zodgevv/${project.artifactId}:${project.version}</name>
 						<publish>false</publish>
 					</image>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.ossindex.maven</groupId>
+				<artifactId>ossindex-maven-plugin</artifactId>
+				<configuration>
+					<reportFile>${project.build.directory}/audit-report.json</reportFile>
+
+					<fail>false</fail>
+				</configuration>
+				<executions>
+					<execution>
+						<id>audit-dependencies</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>audit</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.44.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<images>
+						<image>
+							<name>${image.registry}/${project.artifactId}:${image.tag}</name>
+							<build>
+								<dockerFile>${project.basedir}/dockerfile</dockerFile>
+								<args>
+									<imageName>${project.artifactId}-latest</imageName>
+								</args>
+							</build>
+						</image>
+					</images>
 				</configuration>
 			</plugin>
 		</plugins>
