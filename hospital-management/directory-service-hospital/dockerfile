@@ -2,7 +2,7 @@
 FROM gayatri589/open-jdk
 
 # Add a volume pointing to /tmp
-VOLUME /tmp
+VOLUME /tmp 
 
 # Copy the application JAR file
 COPY target/directory-service-0.0.1-SNAPSHOT.jar app.jar
