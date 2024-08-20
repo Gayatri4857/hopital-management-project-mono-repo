@@ -35,11 +35,17 @@ jobs:
         if: false
         run: mvn org.owasp:dependency-check-maven:check
 
-      - name: Build code and create docker images
+      - name: License finder
         run: |
-          - name: Build code and create docker images
-            run: mvn clean install docker:build -Dimage.registry=${{secrets.CONTAINER_REGISTRY_URL}} -Dimage.tag=$GITHUB_REF_NAME
-        working-directory: hospital-management/case-service
+          cd hospital-management/appointment-service
+          docker pull gayatri589/license-finder
+          docker run -v "$(pwd):/scan" gayatri589/license-finder
+        continue-on-error: true
+
+      - name: Build code and create docker image
+        run: |
+          cd hospital-management/case-service-service
+          mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
         
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@v2
@@ -47,10 +53,9 @@ jobs:
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
           password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
-      - name: Push docker images
-        run: |
-          CURRENT_FOLDER_NAME=$(basename $(pwd))
-          docker push ${{secrets.CONTAINER_REGISTRY_URL}}/$CURRENT_FOLDER_NAME:$GITHUB_REF_NAME
+      - name: Push Docker Image
+        run: 
+          docker push ${{secrets.DOCKER_REGISTRY_USER}}/case_service:$GITHUB_REF_NAME
  
          
          
