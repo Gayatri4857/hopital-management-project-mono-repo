@@ -3,7 +3,7 @@ FROM gayatri589/open-jdk
 WORKDIR /app
  
 ARG imageName=hospital_management_project-latest
-ENV IMAGE_NAME=${imageName}
+ENV IMAGE_NAME=${imageName} 
 
 COPY target/${IMAGE_NAME}.jar ${IMAGE_NAME}.jar
 
