@@ -57,7 +57,7 @@ jobs:
 
       - name: License finder
         run: |
-          cd hospital-management/appointment-service
+          cd hospital-management/api-gateway
           docker pull gayatri589/license-finder
           docker run -v "$(pwd):/scan" gayatri589/license-finder
         continue-on-error: true
