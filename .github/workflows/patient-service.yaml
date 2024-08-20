@@ -1,4 +1,4 @@
-name: Build Hospital Management Project image
+name: Build Patient service image 
 
 on:
   push: 
