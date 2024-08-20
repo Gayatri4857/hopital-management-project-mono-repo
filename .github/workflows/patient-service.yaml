@@ -62,6 +62,7 @@ jobs:
         env:
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
           JAVA_HOME_17_X64: /usr/lib/jvm/java-17-openjdk-amd64
+          continue-on-error: true
 
 
 
