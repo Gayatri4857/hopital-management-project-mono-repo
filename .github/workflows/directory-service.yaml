@@ -1,4 +1,4 @@
-name: Build Image for directory service.
+name: Build Image for directory service
 
 on:
   push:
@@ -15,21 +15,26 @@ jobs:
 
       - name: Perform google formatter check
         run: mvn com.spotify.fmt:fmt-maven-plugin:check
+        working-directory: hospital-management/directory-service-hospital
 
       - name: GitLeaks Scan
         uses: zricethezav/gitleaks-action@v1.3.0
         with:
           args: --path=.
+        working-directory: hospital-management/directory-service-hospital
 
       - name: OSS scan
         run: mvn ossindex:audit
+        working-directory: hospital-management/directory-service-hospital
 
       - name: OWASP Scan
         if: false
         run: mvn org.owasp:dependency-check-maven:check
+        working-directory: hospital-management/directory-service-hospital
 
       - name: Run Unit Tests
         run: mvn test
+        working-directory: hospital-management/directory-service-hospital
 
       - name: Report Test Results
         if: always()
@@ -37,12 +42,15 @@ jobs:
         with:
           name: test-results
           path: target/surefire-reports/*.xml
+        working-directory: hospital-management/directory-service-hospital
 
       - name: Build code and create docker image
         run: mvn clean install docker:build
+        working-directory: hospital-management/directory-service-hospital
 
-      - name: Re tag the docker image
+      - name: Re-tag the docker image
         run: docker tag dnyanyog.org/directoryser:latest ${{ env.DOCKER_REGISTRY_USER }}/directory-service:latest
+        working-directory: hospital-management/directory-service-hospital
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -51,5 +59,5 @@ jobs:
           password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
       - name: Push Docker Image for directory-service
-        run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/directory-service:latest
+        run: docker push ${{ secrets.DOCKER_REGISTRY_USER }}/directory-service:latest
+        working-directory: hospital-management/directory-service-hospital
