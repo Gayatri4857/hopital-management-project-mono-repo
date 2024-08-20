@@ -1,9 +1,8 @@
 package org.dnyanyog.service;
 
+import jakarta.validation.Valid;
 import org.dnyanyog.dto.AppointmentRequest;
 import org.dnyanyog.dto.AppointmentResponse;
-
-import jakarta.validation.Valid;
 
 public interface AppointmentService {
   public AppointmentResponse addAppointment(@Valid AppointmentRequest request) throws Exception;

@@ -1,8 +1,7 @@
 package org.dnyanyog.dto;
 
-import org.springframework.stereotype.Component;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.springframework.stereotype.Component;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Component

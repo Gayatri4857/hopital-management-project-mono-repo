@@ -1,7 +1,7 @@
 package org.dnyanyog.service;
 
+import jakarta.validation.Valid;
 import java.util.List;
-
 import org.dnyanyog.common.ResponseCode;
 import org.dnyanyog.dto.AppointmentRequest;
 import org.dnyanyog.dto.AppointmentResponse;
@@ -9,8 +9,6 @@ import org.dnyanyog.entity.Appointment;
 import org.dnyanyog.repo.AppointmentServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import jakarta.validation.Valid;
 
 @Service
 public class AppointmentServiceImp {

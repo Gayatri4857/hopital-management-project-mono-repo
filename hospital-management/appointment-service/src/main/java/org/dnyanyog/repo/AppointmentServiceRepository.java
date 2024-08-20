@@ -1,7 +1,6 @@
 package org.dnyanyog.repo;
 
 import java.util.List;
-
 import org.dnyanyog.entity.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
