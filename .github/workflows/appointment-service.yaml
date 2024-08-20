@@ -60,3 +60,15 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ${{ secrets.DOCKER_REGISTRY_USER }}/appointment_service:${{ github.ref_name }}
+
+
+  liencense-finder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: License finder
+        run: |
+          cd hospital-management/appointment-service
+          docker pull gayatri589/license-finder
+          docker run -v "$(pwd):/scan" gayatri589/license-finder
+        continue-on-error: true
