@@ -3,9 +3,8 @@ FROM gayatri589/open-jdk
   
 WORKDIR /app
 
-ARG imageName=directory-service
-ENV IMAGE_NAME=${imageName}
+# Copy the application JAR file
+COPY target/directoryser-0.0.1-SNAPSHOT.jar /app/directory-service.jar
 
-COPY target/${IMAGE_NAME}.jar ${IMAGE_NAME}.jar
-
-ENTRYPOINT ["sh", "-c", "java -jar /app/${IMAGE_NAME}.jar"]
+# Start the application
+CMD ["java", "-jar","directory-service.jar"]
