@@ -1,5 +1,5 @@
 # Use a base image with the required runtime environment
-# Use a base image with JDK
+# Use a base image with JDK 
 FROM gayatri589/open-jdk 
 
 # Set the working directory inside the container
