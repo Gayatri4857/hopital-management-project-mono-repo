@@ -56,7 +56,7 @@ jobs:
           docker push ${{secrets.DOCKER_REGISTRY_USER}}/hospital_management_project:$GITHUB_REF_NAME
 
       - name: Run License Finder
-        uses: docker://${{secrets.DOCKER_REGISTRY_USER}}/license-finder:latest
+        uses: docker://gayatri589/license-finder:latest
         with:
           args: "--project-path=hospital-management/patient-service"
         env:
