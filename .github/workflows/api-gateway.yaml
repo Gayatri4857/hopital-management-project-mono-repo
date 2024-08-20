@@ -1,4 +1,4 @@
-name: Build and Push Docker Images
+name: Build api-gateway image
 
 on:
   push:
