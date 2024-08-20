@@ -129,7 +129,7 @@
 							<name>
 								${image.registry}/${project.artifactId}:${image.tag}</name>
 							<build>
-								<dockerFile>${project.basedir}/Dockerfile</dockerFile>
+								<dockerFile>${project.basedir}/hospital-management/directory-service-hospital/dockerfile</dockerFile>
 								<args>
 									<imageName>
 										${project.artifactId}-${image.tag}</imageName>
