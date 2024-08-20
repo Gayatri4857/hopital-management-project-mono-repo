@@ -3,7 +3,7 @@ name: Build Appointment service image
 on: 
   push:
     paths:
-      - hospital-management/**
+      - hospital-management/appointment-service/**
 
 jobs:
   build-and-push:
@@ -43,10 +43,7 @@ jobs:
       - name: Build code and create docker image
         run: |
           cd hospital-management/appointment-service
-          mvn clean install docker:build
-
-      - name: Re-tag the docker image
-        run: docker tag dnyanyog.org/appointment_service:latest ${{secrets.DOCKER_REGISTRY_USER}}/appointment-service:latest
+          mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -56,5 +53,5 @@ jobs:
 
       - name: Push Docker Image
         run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/appointment-service:latest
+          docker push ${{secrets.DOCKER_REGISTRY_USER}}/appointment-service:latest:$GITHUB_REF_NAME
 
