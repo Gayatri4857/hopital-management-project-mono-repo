@@ -1,8 +1,7 @@
 package org.dnyanyog.services;
 
+import jakarta.validation.Valid;
 import java.util.List;
-import java.util.Optional;
-
 import org.dnyanyog.common.ResponseCode;
 import org.dnyanyog.dto.PatientRequest;
 import org.dnyanyog.dto.PatientResponse;
@@ -11,10 +10,8 @@ import org.dnyanyog.repo.PatientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.validation.Valid;
-
 @Service
-public class PatientManagementServiceImp implements PatientManagementService{
+public class PatientManagementServiceImp implements PatientManagementService {
 
   @Autowired private PatientsRepository patientRepo;
   @Autowired private PatientResponse patientResponse;
