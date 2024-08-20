@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.gayatri</groupId>
-  <artifactId>directoryser</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.gayatri</groupId>
+	<artifactId>directoryser</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.0</version>
@@ -12,8 +14,8 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<image.registry>dnyanyog.org</image.registry>
-		<image.tag>latest</image.tag>
+		<image.registry>${env.DOCKER_REGISTRY_URL}</image.registry>
+		<image.tag>${env.GIT_BRANCH}</image.tag>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -92,7 +94,8 @@
 				</executions>
 				<configuration>
 					<image>
-						<name>docker.io/zodgevv/${project.artifactId}:${project.version}</name>
+						<name>
+							docker.io/zodgevv/${project.artifactId}:${project.version}</name>
 						<publish>false</publish>
 					</image>
 				</configuration>
@@ -123,11 +126,13 @@
 				<configuration>
 					<images>
 						<image>
-							<name>${image.registry}/${project.artifactId}:${image.tag}</name>
+							<name>
+								${image.registry}/${project.artifactId}:${image.tag}</name>
 							<build>
-								<dockerFile>${project.basedir}/dockerfile</dockerFile>
+								<dockerFile>${project.basedir}/Dockerfile</dockerFile>
 								<args>
-									<imageName>${project.artifactId}-latest</imageName>
+									<imageName>
+										${project.artifactId}-${image.tag}</imageName>
 								</args>
 							</build>
 						</image>
