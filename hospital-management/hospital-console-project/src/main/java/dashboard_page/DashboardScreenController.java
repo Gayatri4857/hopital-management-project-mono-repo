@@ -1,9 +1,8 @@
 package dashboard_page;
 
-import java.io.IOException;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -1,16 +1,14 @@
 package user_add;
 
-import java.io.IOException;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.UserRequest;
 import dto.UserResponse;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -46,9 +44,8 @@ public class UserAddScreenController {
   @FXML private TextField password;
 
   @FXML private TextField confirm;
-  
-  @FXML private Label Message;
 
+  @FXML private Label Message;
 
   public void PatientsButton(ActionEvent event) throws IOException {
 
@@ -114,7 +111,6 @@ public class UserAddScreenController {
       e.printStackTrace();
     }
     Message.setText("User added successfully !!");
-
   }
 
   public void Cancle_Button(ActionEvent event) {

@@ -1,12 +1,11 @@
 package case_page;
 
-import java.io.IOException;
-
 import appointment_page.AppointmentPageScreen;
 import case_add.CaseAddScreen;
 import case_delete.DeleteCaseScreen;
 import case_edit.EditCaseScreen;
 import dashboard_page.DashboardScreen;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

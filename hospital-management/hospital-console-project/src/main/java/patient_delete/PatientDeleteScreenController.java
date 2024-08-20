@@ -1,21 +1,19 @@
 package patient_delete;
 
-import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.PatientResponse;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -61,9 +59,8 @@ public class PatientDeleteScreenController implements Initializable {
   @FXML private TextField patient_id;
 
   @FXML private Button search;
-  
-  @FXML private Label Message;
 
+  @FXML private Label Message;
 
   public void initialize(URL location, ResourceBundle resources) {
 
@@ -141,12 +138,11 @@ public class PatientDeleteScreenController implements Initializable {
         address.setText(response.getAddress());
         setFieldsEditable(false);
       } else {
-    	  Message.setText("Error, Please enter a valid patient ID or Name.");
+        Message.setText("Error, Please enter a valid patient ID or Name.");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while fetching the patient details.");
+      Message.setText("Error, An error occurred while fetching the patient details.");
     }
   }
 
@@ -154,7 +150,7 @@ public class PatientDeleteScreenController implements Initializable {
     String patientId = patient_id.getText().trim();
 
     if (patientId.isEmpty()) {
-    	Message.setText("Error, Please enter a patient ID to delete.");
+      Message.setText("Error, Please enter a patient ID to delete.");
       return;
     }
 
@@ -164,7 +160,7 @@ public class PatientDeleteScreenController implements Initializable {
               "http://localhost:8082/api/v1/patient/" + patientId, PatientResponse.class);
 
       if (response != null && response.getStatus().equals("Success")) {
-    	  Message.setText("Success, Patient has been deleted successfully.");
+        Message.setText("Success, Patient has been deleted successfully.");
         patient_id.clear();
         patient_name_search.clear();
         patient_name_english.clear();
@@ -175,13 +171,11 @@ public class PatientDeleteScreenController implements Initializable {
         first_examination_date.setValue(null);
         address.clear();
       } else {
-    	  Message.setText(
-            "Error, An error occurred while deleting the patient.");
+        Message.setText("Error, An error occurred while deleting the patient.");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while deleting the patient.");
+      Message.setText("Error, An error occurred while deleting the patient.");
     }
   }
 

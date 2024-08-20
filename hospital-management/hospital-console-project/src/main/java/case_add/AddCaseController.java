@@ -1,16 +1,14 @@
 package case_add;
 
-import java.io.IOException;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.CaseRequest;
 import dto.CaseResponse;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -45,7 +43,7 @@ public class AddCaseController {
   @FXML private TextField prescription;
 
   @FXML private Button cancle;
-  
+
   @FXML private Label Message;
 
   @FXML private Button save;
@@ -113,8 +111,7 @@ public class AddCaseController {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-   Message.setText("Case added successfully !!");
-
+    Message.setText("Case added successfully !!");
   }
 
   public void Cancle_Button(ActionEvent event) {

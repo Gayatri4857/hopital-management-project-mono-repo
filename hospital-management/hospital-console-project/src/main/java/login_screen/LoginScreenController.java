@@ -1,11 +1,10 @@
 package login_screen;
 
-import java.sql.SQLException;
-
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.LoginRequest;
 import dto.LoginResponse;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

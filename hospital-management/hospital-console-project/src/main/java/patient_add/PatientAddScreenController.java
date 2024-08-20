@@ -1,21 +1,19 @@
 package patient_add;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.PatientRequest;
 import dto.PatientResponse;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -55,9 +53,8 @@ public class PatientAddScreenController implements Initializable {
   @FXML private DatePicker first_examination_date;
 
   @FXML private TextField address;
-  
-  @FXML private Label Message;
 
+  @FXML private Label Message;
 
   public void initialize(URL location, ResourceBundle resources) {
 
@@ -131,7 +128,6 @@ public class PatientAddScreenController implements Initializable {
       e.printStackTrace();
     }
     Message.setText("Patient added successfully !!");
-
   }
 
   public void Cancle_Button(ActionEvent event) {

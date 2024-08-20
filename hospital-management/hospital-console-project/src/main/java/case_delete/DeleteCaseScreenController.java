@@ -1,13 +1,12 @@
 package case_delete;
 
-import java.io.IOException;
-import java.time.LocalDate;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.CaseResponse;
+import java.io.IOException;
+import java.time.LocalDate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -139,12 +138,11 @@ public class DeleteCaseScreenController {
         setFieldsEditable(false);
 
       } else {
-    	  Message.setText("Error, Please enter valid patient Id or case Id");
+        Message.setText("Error, Please enter valid patient Id or case Id");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while fetching the case details.");
+      Message.setText("Error, An error occurred while fetching the case details.");
     }
   }
 
@@ -152,7 +150,7 @@ public class DeleteCaseScreenController {
     String caseId = case_id.getText().trim();
 
     if (caseId.isEmpty()) {
-    	Message.setText("Error,Please enter a case ID to delete.");
+      Message.setText("Error,Please enter a case ID to delete.");
       return;
     }
 
@@ -162,7 +160,7 @@ public class DeleteCaseScreenController {
               "http://localhost:8084/api/v1/case/" + caseId, CaseResponse.class);
 
       if (response != null && response.getStatus().equals("Success")) {
-    	  Message.setText("Success, Case has been deleted successfully.");
+        Message.setText("Success, Case has been deleted successfully.");
         patient_id_search.clear();
         case_id.clear();
         patient_name_english.clear();
@@ -173,7 +171,7 @@ public class DeleteCaseScreenController {
         symptoms.clear();
 
       } else {
-    	  Message.setText("Error, An error occurred while deleting the case.");
+        Message.setText("Error, An error occurred while deleting the case.");
       }
     } catch (Exception e) {
       e.printStackTrace();

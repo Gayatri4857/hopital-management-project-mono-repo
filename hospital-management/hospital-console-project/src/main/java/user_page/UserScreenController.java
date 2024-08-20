@@ -1,10 +1,9 @@
 package user_page;
 
-import java.io.IOException;
-
 import appointment_add.AddAppointmentScreen;
 import case_add.CaseAddScreen;
 import dashboard_page.DashboardScreen;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

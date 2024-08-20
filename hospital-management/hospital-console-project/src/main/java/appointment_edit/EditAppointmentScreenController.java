@@ -1,17 +1,15 @@
 package appointment_edit;
 
-import java.io.IOException;
-import java.time.LocalDate;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.AppointmentRequest;
 import dto.AppointmentResponse;
+import java.io.IOException;
+import java.time.LocalDate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -48,7 +46,7 @@ public class EditAppointmentScreenController {
   @FXML private Button save;
 
   @FXML private Label Message;
-  
+
   @FXML private TextField patient_id_search;
 
   @FXML private TextField appointment_id_search;
@@ -140,13 +138,11 @@ public class EditAppointmentScreenController {
         appointment_time.setText(response.getAppointment_time());
 
       } else {
-    	  Message.setText(
-            "Error, Please enter valid patient Id or appointment Id");
+        Message.setText("Error, Please enter valid patient Id or appointment Id");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while fetching the appointment details.");
+      Message.setText("Error, An error occurred while fetching the appointment details.");
     }
   }
 
@@ -168,16 +164,13 @@ public class EditAppointmentScreenController {
               updateAppointment);
 
       if (response != null && response.getStatus().equals("Success")) {
-    	  Message.setText(
-            "Success, Appointment details have been updated successfully.");
+        Message.setText("Success, Appointment details have been updated successfully.");
       } else {
-    	  Message.setText(
-            "Error, An error occurred while updating the Appointment details.");
+        Message.setText("Error, An error occurred while updating the Appointment details.");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while updating the Appointment details.");
+      Message.setText("Error, An error occurred while updating the Appointment details.");
     }
   }
 }

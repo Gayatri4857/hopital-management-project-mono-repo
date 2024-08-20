@@ -1,16 +1,14 @@
 package appointment_delete;
 
-import java.io.IOException;
-import java.time.LocalDate;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.AppointmentResponse;
+import java.io.IOException;
+import java.time.LocalDate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -140,13 +138,11 @@ public class DeleteAppointmentScreenController {
         setFieldsEditable(false);
 
       } else {
-    	  userMessage.setText(
-            "Error, Please enter valid patient Id or appointment Id");
-      } 
+        userMessage.setText("Error, Please enter valid patient Id or appointment Id");
+      }
     } catch (Exception e) {
       e.printStackTrace();
-      userMessage.setText(
-          "Error, An error occurred while fetching the appointment details.");
+      userMessage.setText("Error, An error occurred while fetching the appointment details.");
     }
   }
 
@@ -158,14 +154,14 @@ public class DeleteAppointmentScreenController {
       return;
     }
 
-    try { 
+    try {
       AppointmentResponse response =
           RestUtil.sendDeleteRequest(
               "http://localhost:8085/api/v1/appointment/" + appointmentId,
               AppointmentResponse.class);
 
       if (response != null && response.getStatus().equals("Success")) {
-    	userMessage.setText("Success, Appointment has been deleted successfully.");
+        userMessage.setText("Success, Appointment has been deleted successfully.");
         patient_id_search.clear();
         appointment_id.clear();
         patient_name_english.clear();
@@ -175,17 +171,14 @@ public class DeleteAppointmentScreenController {
         appointment_id_search.clear();
 
       } else {
-    	  userMessage.setText(
-    	            "!!Error!! Case not found. Please enter a valid patient ID or case ID.");
-    	     
- }
+        userMessage.setText(
+            "!!Error!! Case not found. Please enter a valid patient ID or case ID.");
+      }
     } catch (Exception e) {
       e.printStackTrace();
-      userMessage.setText(
-              "!!Error!! Case not found. Please enter a valid patient ID or case ID.");
+      userMessage.setText("!!Error!! Case not found. Please enter a valid patient ID or case ID.");
     }
   }
-
 
   private void setFieldsEditable(boolean editable) {
     patient_name_english.setEditable(editable);

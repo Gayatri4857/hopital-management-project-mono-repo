@@ -1,17 +1,15 @@
 package case_edit;
 
-import java.io.IOException;
-import java.time.LocalDate;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.CaseRequest;
 import dto.CaseResponse;
+import java.io.IOException;
+import java.time.LocalDate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -52,7 +50,7 @@ public class EditCaseScreenController {
   @FXML private Button search;
 
   @FXML private TextField case_id;
-  
+
   @FXML private Label Message;
 
   @FXML private TextField patient_id_search;
@@ -140,12 +138,11 @@ public class EditCaseScreenController {
         prescription.setText(response.getPrescription());
 
       } else {
-    	  Message.setText("Error, Please enter valid patient Id or case Id");
+        Message.setText("Error, Please enter valid patient Id or case Id");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while fetching the case details.");
+      Message.setText("Error, An error occurred while fetching the case details.");
     }
   }
 
@@ -166,15 +163,13 @@ public class EditCaseScreenController {
               "http://localhost:8084/api/v1/case/" + caseId, CaseResponse.class, updateCase);
 
       if (response != null && response.getStatus().equals("Success")) {
-    	  Message.setText("Success, Case details have been updated successfully.");
+        Message.setText("Success, Case details have been updated successfully.");
       } else {
-    	  Message.setText(
-            "Error, An error occurred while updating the case details.");
+        Message.setText("Error, An error occurred while updating the case details.");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while updating the case details.");
+      Message.setText("Error, An error occurred while updating the case details.");
     }
   }
 }

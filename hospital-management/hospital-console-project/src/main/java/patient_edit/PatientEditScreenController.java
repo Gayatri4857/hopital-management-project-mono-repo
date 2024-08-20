@@ -1,22 +1,20 @@
 package patient_edit;
 
-import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.PatientRequest;
 import dto.PatientResponse;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -42,7 +40,7 @@ public class PatientEditScreenController implements Initializable {
   @FXML private Button save;
 
   @FXML private Button dashboard;
-  
+
   @FXML private Label Message;
 
   @FXML private TextField patient_name_english;
@@ -140,12 +138,11 @@ public class PatientEditScreenController implements Initializable {
         first_examination_date.setValue(LocalDate.parse(response.getFirst_examination_date()));
         address.setText(response.getAddress());
       } else {
-    	  Message.setText("Error, Please enter a valid patient ID or Name.");
+        Message.setText("Error, Please enter a valid patient ID or Name.");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while fetching the patient details.");
+      Message.setText("Error, An error occurred while fetching the patient details.");
     }
   }
 
@@ -169,15 +166,13 @@ public class PatientEditScreenController implements Initializable {
               updatePatient);
 
       if (response != null && response.getStatus().equals("Success")) {
-    	  Message.setText("Success, Patient details have been updated successfully.");
+        Message.setText("Success, Patient details have been updated successfully.");
       } else {
-    	  Message.setText(
-            "Error, An error occurred while updating the patient details.");
+        Message.setText("Error, An error occurred while updating the patient details.");
       }
     } catch (Exception e) {
       e.printStackTrace();
-      Message.setText(
-          "Error, An error occurred while updating the patient details.");
+      Message.setText("Error, An error occurred while updating the patient details.");
     }
   }
 

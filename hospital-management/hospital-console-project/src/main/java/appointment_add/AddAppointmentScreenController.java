@@ -1,16 +1,14 @@
 package appointment_add;
 
-import java.io.IOException;
-
 import appointment_page.AppointmentPageScreen;
 import case_page.CasePageScreen;
 import common.RestUtil;
 import dashboard_page.DashboardScreen;
 import dto.AppointmentRequest;
 import dto.AppointmentResponse;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -46,7 +44,7 @@ public class AddAppointmentScreenController {
   @FXML private Button cancle;
 
   @FXML private Button save;
-  
+
   @FXML private Label userMessage;
 
   public void PatientsButton(ActionEvent event) throws IOException {
@@ -110,11 +108,11 @@ public class AddAppointmentScreenController {
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      userMessage.setText("Failded to add user"+e.getMessage());
+      userMessage.setText("Failded to add user" + e.getMessage());
     } catch (InterruptedException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      userMessage.setText("Failded to add user"+e.getMessage());
+      userMessage.setText("Failded to add user" + e.getMessage());
     }
     userMessage.setText("Appointment added successfully !!");
   }
