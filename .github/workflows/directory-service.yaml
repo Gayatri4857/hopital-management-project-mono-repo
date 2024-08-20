@@ -46,7 +46,7 @@ jobs:
           mvn clean install docker:build
 
       - name: Re-tag the docker image
-        run: docker tag dnyanyog.org/directoryser:latest ${{ env.DOCKER_REGISTRY_USER }}/directory-service:latest
+        run: docker tag dnyanyog.org/directoryser:latest ${{ secrets.DOCKER_REGISTRY_USER }}/directory-service:latest
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
