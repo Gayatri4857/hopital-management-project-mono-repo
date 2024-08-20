@@ -43,7 +43,7 @@ jobs:
       - name: Build code and create docker image
         run: |
           cd hospital-management/patient-service
-          mvn docker:build _Dimage.registry= ${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
+          mvn clean install docker:build _Dimage.registry= ${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
