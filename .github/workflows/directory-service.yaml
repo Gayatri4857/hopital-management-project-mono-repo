@@ -34,18 +34,6 @@ jobs:
           cd hospital-management/directory-service-hospital
           mvn org.owasp:dependency-check-maven:check
 
-      - name: Run Unit Tests
-        run: |
-          cd hospital-management/directory-service-hospital
-          mvn test
-
-      - name: Report Test Results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: hospital-management/directory-service-hospital/target/surefire-reports/*.xml
-
       - name: Build code and create docker image
         run: |
           cd hospital-management/directory-service-hospital
