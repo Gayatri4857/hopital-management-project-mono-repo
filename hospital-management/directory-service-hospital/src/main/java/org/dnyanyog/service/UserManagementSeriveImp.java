@@ -1,15 +1,13 @@
 package org.dnyanyog.service;
 
+import jakarta.validation.Valid;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
-import java.util.Optional;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-
 import org.dnyanyog.common.ResponseCode;
 import org.dnyanyog.dto.UserRequest;
 import org.dnyanyog.dto.UserResponse;
@@ -18,8 +16,6 @@ import org.dnyanyog.exception.PasswordMismatchException;
 import org.dnyanyog.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import jakarta.validation.Valid;
 
 @Service
 public class UserManagementSeriveImp {

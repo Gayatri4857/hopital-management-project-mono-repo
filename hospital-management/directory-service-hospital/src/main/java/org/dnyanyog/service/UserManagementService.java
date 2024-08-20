@@ -1,9 +1,8 @@
 package org.dnyanyog.service;
 
+import jakarta.validation.Valid;
 import org.dnyanyog.dto.UserRequest;
 import org.dnyanyog.dto.UserResponse;
-
-import jakarta.validation.Valid;
 
 public interface UserManagementService {
   public UserResponse addUser(@Valid UserRequest request) throws Exception;
