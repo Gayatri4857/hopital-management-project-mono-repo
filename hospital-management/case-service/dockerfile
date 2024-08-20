@@ -1,7 +1,7 @@
 FROM gayatri589/open-jdk
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /app 
 
 # Copy the application JAR file 
 COPY . /app
