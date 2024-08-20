@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.gayatri</groupId>
-	<artifactId>directoryser</artifactId>
+	<artifactId>directory-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<parent>
@@ -14,8 +14,8 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<image.registry>${env.DOCKER_REGISTRY_URL}</image.registry>
-		<image.tag>${env.GIT_BRANCH}</image.tag>
+		<image.registry>dnyanyog.org</image.registry>
+		<image.tag>latest</image.tag>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -69,6 +69,7 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<finalName>directory-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.spotify.fmt</groupId>
@@ -130,10 +131,10 @@
 										${image.registry}/${project.artifactId}:${image.tag}</name>
 									<build>
 										<dockerFile>
-											${project.basedir}/src/main/dockerfile</dockerFile> 
+											${project.basedir}/dockerfile</dockerFile> 
 										<args>
 											<imageName>
-												${project.artifactId}-${image.tag}</imageName>
+												${project.artifactId}-latest</imageName>
 										</args>
 									</build>
 								</image>
