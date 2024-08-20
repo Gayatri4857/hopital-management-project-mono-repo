@@ -1,6 +1,6 @@
 name: Build api-gateway image
 
-on:
+on: 
   push:
     paths:
       - hospital-management/**
