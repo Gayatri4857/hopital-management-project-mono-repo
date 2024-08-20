@@ -6,5 +6,5 @@ WORKDIR /app
 # Copy the application JAR file 
 COPY . /app
 
-# Start the application
+# Start the application 
 CMD ["java", "-jar", "/app/patient-service.jar"]
