@@ -1,7 +1,7 @@
 name: Build Hospital Console project
 
 on:
-  push:
+  push: 
     paths:
       - hospital-management/hospital-console/**
  
