@@ -8,3 +8,4 @@ COPY . /app
 
 # Start the application
 CMD ["java", "-jar", "/app/directory-service.jar"]
+ 
