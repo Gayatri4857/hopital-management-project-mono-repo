@@ -53,5 +53,5 @@ jobs:
 
       - name: Push Docker Image
         run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/appointment_service:latest:$GITHUB_REF_NAME
+          docker push ${{secrets.DOCKER_REGISTRY_USER}}/appointment_service:$GITHUB_REF_NAME
 
