@@ -14,43 +14,45 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Perform google formatter check
-        run: mvn com.spotify.fmt:fmt-maven-plugin:check
-        working-directory: hospital-management/directory-service-hospital
+        run: |
+          cd hospital-management/directory-service-hospital
+          mvn com.spotify.fmt:fmt-maven-plugin:check
 
       - name: GitLeaks Scan
         uses: zricethezav/gitleaks-action@v1.3.0
         with:
-          args: --path=.
-        working-directory: hospital-management/directory-service-hospital
+          args: --path=hospital-management/directory-service-hospital
 
       - name: OSS scan
-        run: mvn ossindex:audit
-        working-directory: hospital-management/directory-service-hospital
+        run: |
+          cd hospital-management/directory-service-hospital
+          mvn ossindex:audit
 
       - name: OWASP Scan
         if: false
-        run: mvn org.owasp:dependency-check-maven:check
-        working-directory: hospital-management/directory-service-hospital
+        run: |
+          cd hospital-management/directory-service-hospital
+          mvn org.owasp:dependency-check-maven:check
 
       - name: Run Unit Tests
-        run: mvn test
-        working-directory: hospital-management/directory-service-hospital
+        run: |
+          cd hospital-management/directory-service-hospital
+          mvn test
 
       - name: Report Test Results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: target/surefire-reports/*.xml
-        working-directory: hospital-management/directory-service-hospital
+          path: hospital-management/directory-service-hospital/target/surefire-reports/*.xml
 
       - name: Build code and create docker image
-        run: mvn clean install docker:build
-        working-directory: hospital-management/directory-service-hospital
+        run: |
+          cd hospital-management/directory-service-hospital
+          mvn clean install docker:build
 
       - name: Re-tag the docker image
         run: docker tag dnyanyog.org/directoryser:latest ${{ env.DOCKER_REGISTRY_USER }}/directory-service:latest
-        working-directory: hospital-management/directory-service-hospital
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -60,4 +62,3 @@ jobs:
 
       - name: Push Docker Image for directory-service
         run: docker push ${{ secrets.DOCKER_REGISTRY_USER }}/directory-service:latest
-        working-directory: hospital-management/directory-service-hospital
