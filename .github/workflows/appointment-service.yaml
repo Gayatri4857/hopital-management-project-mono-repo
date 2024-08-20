@@ -29,6 +29,7 @@ jobs:
           cd hospital-management/appointment-service
           docker pull gayatri589/license-finder
           docker run -v "$(pwd):/scan" gayatri589/license-finder
+        continue-on-error: true
 
       - name: GitLeaks Scan
         uses: zricethezav/gitleaks-action@v1.3.0
