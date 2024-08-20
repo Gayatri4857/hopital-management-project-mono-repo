@@ -35,13 +35,6 @@ jobs:
         if: false
         run: mvn org.owasp:dependency-check-maven:check
 
-      - name: License finder
-        run: |
-          cd hospital-management/appointment-service
-          docker pull gayatri589/license-finder
-          docker run -v "$(pwd):/scan" gayatri589/license-finder
-        continue-on-error: true
-
       - name: Build code and create docker image
         run: |
           cd hospital-management/case-service-service
@@ -56,6 +49,17 @@ jobs:
       - name: Push Docker Image
         run: 
           docker push ${{secrets.DOCKER_REGISTRY_USER}}/case_service:$GITHUB_REF_NAME
+
+  liencense-finder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: License finder
+        run: |
+          cd hospital-management/appointment-service
+          docker pull gayatri589/license-finder
+          docker run -v "$(pwd):/scan" gayatri589/license-finder
+        continue-on-error: true
  
          
          
