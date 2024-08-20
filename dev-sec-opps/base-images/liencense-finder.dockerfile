@@ -7,11 +7,14 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install the license_finder gem
-RUN gem install license_finder
-
 # Set JAVA_HOME to point to the JDK
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
+# Update PATH to include the JAVA_HOME/bin directory
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Install the license_finder gem
+RUN gem install license_finder
 
 # Set the working directory
 WORKDIR /scan
