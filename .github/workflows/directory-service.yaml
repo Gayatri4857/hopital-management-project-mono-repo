@@ -43,7 +43,7 @@ jobs:
       - name: Build code and create docker image
         run: |
           cd hospital-management/directory-service-hospital
-          mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
+          mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=${{ github.ref_name }}
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -51,6 +51,13 @@ jobs:
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
           password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
-      - name: Push Docker Image for directory-service
-        run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/directory-service:$GITHUB_REF_NAME
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKER_REGISTRY_USER }}/directoryser${{ github.ref_name }}
+
+      - name: License finder
+        run: |
+          cd hospital-management/directory-service-hospital
+          docker pull gayatri589/license-finder
+          docker run -v "$(pwd):/scan" gayatri589/license-finder
+        continue-on-error: true
