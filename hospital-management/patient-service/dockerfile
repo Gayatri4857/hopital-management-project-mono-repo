@@ -4,7 +4,7 @@ FROM gayatri589/open-jdk
 WORKDIR /app
  
 # Define build-time argument 
-ARG imageName
+ARG imageName 
 
 # Set environment variable from ARG
 ENV IMAGE_NAME=${imageName}
