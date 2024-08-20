@@ -4,7 +4,7 @@ FROM gayatri589/open-jdk
 
 WORKDIR /app    
  
-ARG imageName=hospital_management_project-latest  
+ARG imageName=appointment-service  
 ENV IMAGE_NAME=${imageName} 
 
 COPY target/${IMAGE_NAME}.jar ${IMAGE_NAME}.jar
