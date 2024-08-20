@@ -3,7 +3,7 @@ FROM gayatri589/open-jdk
 # Set the working directory inside the container
 WORKDIR /app
  
-# Define build-time argument 
+# Define build-time argument  
 ARG imageName 
 
 # Set environment variable from ARG
