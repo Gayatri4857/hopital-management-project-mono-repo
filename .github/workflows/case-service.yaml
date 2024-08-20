@@ -34,19 +34,13 @@ jobs:
           cd hospital-management/case-service
           mvn ossindex:audit
 
-      - name: OWASP Scan
-        if: false
-        run: |
-          cd hospital-management/case-service
-          mvn org.owasp:dependency-check-maven:check
-
       - name: Build code and create docker image
+        env:
+          DOCKER_REGISTRY_URL: ${{ secrets.DOCKER_REGISTRY_USER }}
+          GIT_BRANCH: ${{ github.ref_name }}  # Automatically uses the branch name
         run: |
           cd hospital-management/case-service
           mvn clean install docker:build
-
-      - name: Re-tag the docker image
-        run: docker tag dnyanyog.org/case_service:latest ${{ secrets.DOCKER_REGISTRY_USER }}/case-service:latest
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2 
@@ -54,9 +48,6 @@ jobs:
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
           password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
-      - name: Push Docker Image for directory-service
-        run: docker push ${{ secrets.DOCKER_REGISTRY_USER }}/case-service:latest
-
       - name: Push Docker Image for case-service
-        run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER }}/case-service:latest
+        run: |
+          docker push ${{ secrets.DOCKER_REGISTRY_USER }}/case-service:${{ github.ref_name }}
