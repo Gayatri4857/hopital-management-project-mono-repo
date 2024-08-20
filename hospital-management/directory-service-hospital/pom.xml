@@ -69,7 +69,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>directory-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.spotify.fmt</groupId>
