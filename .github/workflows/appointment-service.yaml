@@ -24,6 +24,12 @@ jobs:
           cd hospital-management/appointment-service
           mvn com.spotify.fmt:fmt-maven-plugin:check
 
+      - name: License finder
+        run: |
+          cd hospital-management/appointment-service
+          docker pull gayatri589/license-finder
+          docker run -v "$(pwd):/scan" gayatri589/license-finder
+
       - name: GitLeaks Scan
         uses: zricethezav/gitleaks-action@v1.3.0
         with:
