@@ -68,7 +68,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>hospital_management_project-latest</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.spotify.fmt</groupId>
