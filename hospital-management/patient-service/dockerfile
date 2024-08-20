@@ -1,7 +1,7 @@
 FROM gayatri589/open-jdk
 
 WORKDIR /app
-
+ 
 ARG imageName=hospital_management_project-latest
 ENV IMAGE_NAME=${imageName}
 
