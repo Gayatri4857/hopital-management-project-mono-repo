@@ -60,5 +60,7 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}/hospital-management/patient-service:/app \
             -e JAVA_HOME=/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.12-7/x64 \
-            gayatri589/license-finder:latest \
+            ***/license-finder:latest \
             --project-path=/app
+
+
