@@ -11,8 +11,6 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<image.registry>dnyanyog.org</image.registry>
-		<image.tag>latest</image.tag>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -165,25 +163,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.44.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<images>
-						<image>
-							<name>${image.registry}/${project.artifactId}:${image.tag}</name>
-							<build>
-								<dockerFile>${project.basedir}/dockerfile</dockerFile>
-								<args>
-									<imageName>${project.artifactId}-latest</imageName>
-								</args>
-							</build>
-						</image>
-					</images>
-				</configuration>
-			</plugin>
+			
 		</plugins>
 	</build>
 </project>
