@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - hospital-management/**
-
+ 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
