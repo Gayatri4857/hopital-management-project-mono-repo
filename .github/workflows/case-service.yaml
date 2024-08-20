@@ -37,22 +37,20 @@ jobs:
 
       - name: Build code and create docker images
         run: |
-          mvn clean install
-          mvn docker:build -Dimage.registry=${{secrets.CONTAINER_REGISTRY_URL}} -Dimage.tag=$GITHUB_REF_NAME
+          - name: Build code and create docker images
+            run: mvn clean install docker:build -Dimage.registry=${{secrets.CONTAINER_REGISTRY_URL}} -Dimage.tag=$GITHUB_REF_NAME
         working-directory: hospital-management/case-service
         
-      - name: List Docker Images
-        run: docker images
-
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@v2
         with:
-          username: ${{secrets.DOCKER_REGISTRY_USER}}
-          password: ${{secrets.DOCKER_REGISTRY_PAT}}
+          username: ${{ secrets.DOCKER_REGISTRY_USER }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
       - name: Push docker images
         run: |
-         docker push ${{secrets.CONTAINER_REGISTRY_URL}}/case-service:$GITHUB_REF_NAME
-         
+          CURRENT_FOLDER_NAME=$(basename $(pwd))
+          docker push ${{secrets.CONTAINER_REGISTRY_URL}}/$CURRENT_FOLDER_NAME:$GITHUB_REF_NAME
+ 
          
          
