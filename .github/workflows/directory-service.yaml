@@ -3,7 +3,7 @@ name: Build Image for directory service.
 on:
   push:
     paths:
-      - hospital-management/**
+      - hospital-management/directory-service-hospital/**
 
 jobs:
   build-and-push:
