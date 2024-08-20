@@ -1,6 +1,6 @@
 name: Build Appointment service image
 
-on:
+on: 
   push:
     paths:
       - hospital-management/**
