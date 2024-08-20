@@ -36,11 +36,10 @@ jobs:
 
       - name: Build code and create docker image
         env:
-          DOCKER_REGISTRY_URL: ${{ secrets.DOCKER_REGISTRY_USER }}
-          GIT_BRANCH: ${{ github.ref_name }}  # Automatically uses the branch name
+          IMAGE_TAG: ${{ github.ref_name }}  # Uses the branch name as the tag
         run: |
           cd hospital-management/case-service
-          mvn clean install docker:build
+          mvn clean install docker:build -Ddocker.image.tag=${IMAGE_TAG}
 
       - name: List Docker Images
         run: docker images  # Lists all docker images to verify tagging
