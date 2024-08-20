@@ -1,4 +1,4 @@
-name: Build Patient Service image
+name: Build Hospital Management Project image
 
 on:
   push: 
@@ -45,7 +45,6 @@ jobs:
           cd hospital-management/patient-service
           mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
 
-
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -54,4 +53,4 @@ jobs:
 
       - name: Push Docker Image for patient-service
         run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/patient-service:$GITHUB_REF_NAME
+          docker push ${{secrets.DOCKER_REGISTRY_USER}}/hospital_management_project:$GITHUB_REF_NAME
