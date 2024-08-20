@@ -37,8 +37,8 @@ jobs:
 
       - name: Build code and create docker image
         run: |
-          cd hospital-management/case-service-service
-          mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=$GITHUB_REF_NAME
+          cd hospital-management/case-service
+          mvn clean install docker:build -Dimage.registry=${{ secrets.DOCKER_REGISTRY_USER }} -Dimage.tag=${{ github.ref_name }}
         
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@v2
@@ -48,7 +48,7 @@ jobs:
 
       - name: Push Docker Image
         run: 
-          docker push ${{secrets.DOCKER_REGISTRY_USER}}/case_service:$GITHUB_REF_NAME
+          docker push ${{secrets.DOCKER_REGISTRY_USER}}/case_service:${{ github.ref_name }}
 
   liencense-finder:
     runs-on: ubuntu-latest
