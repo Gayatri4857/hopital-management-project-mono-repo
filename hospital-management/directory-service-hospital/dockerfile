@@ -1,6 +1,6 @@
 # Use a base image with Java 11
 FROM gayatri589/open-jdk 
- 
+  
 # Add a volume pointing to /tmp
 VOLUME /tmp 
 
