@@ -30,9 +30,10 @@ jobs:
           rm -rf target
 
       - name: GitLeaks Scan
-        uses: zricethezav/gitleaks-action@v1.3.0
-        with:
-          args: --path=hospital-management/appointment-service
+        run: |
+          cd hospital-management/appointment-service
+          docker pull gayatri589/gitleaks
+          docker run -v "$(pwd):/scan" gayatri589/gitleaks
 
       - name: OSS scan
         run: |
