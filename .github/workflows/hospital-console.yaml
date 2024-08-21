@@ -26,7 +26,7 @@ jobs:
 
       - name: GitLeaks Scan
         run: |
-          cd hospital-management/hospital-console
+          cd hospital-management/hospital-console-project
           docker pull gayatri589/gitleaks
           docker run -v "$(pwd):/scan" gayatri589/gitleaks
 
@@ -43,7 +43,7 @@ jobs:
 
       - name: License finder
         run: |
-          cd hospital-management/hospital-console
+          cd hospital-management/hospital-console-project
           docker pull gayatri589/license-finder
           docker run -v "$(pwd):/scan" gayatri589/license-finder
         continue-on-error: true
