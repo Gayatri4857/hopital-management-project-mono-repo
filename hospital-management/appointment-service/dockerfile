@@ -1,7 +1,7 @@
 # Use a base image with the required runtime environment
 # Use a base image with JDK 
 FROM gayatri589/open-jdk   
-  
+   
 WORKDIR /app     
   
 # Copy the application JAR file
