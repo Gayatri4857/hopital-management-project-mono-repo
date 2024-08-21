@@ -3,7 +3,7 @@ name: Build Hospital Console project
 on:
   push: 
     paths:
-      - hospital-management/hospital-console/**
+      - hospital-management/**
  
 jobs:
   build-and-push:
