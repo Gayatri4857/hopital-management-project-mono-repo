@@ -25,9 +25,11 @@ jobs:
           mvn com.spotify.fmt:fmt-maven-plugin:check
 
       - name: GitLeaks Scan
-        uses: zricethezav/gitleaks-action@v1.3.0
-        with:
-          args: --path=hospital-management/directory-service-hospital
+        run: |
+          cd hospital-management/directory-service-hospital
+          docker pull gayatri589/gitleaks
+          docker run -v "$(pwd):/scan" gayatri589/gitleaks
+
 
       - name: OSS scan
         run: |
