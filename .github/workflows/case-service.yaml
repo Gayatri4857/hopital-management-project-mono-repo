@@ -23,13 +23,11 @@ jobs:
         run: mvn com.spotify.fmt:fmt-maven-plugin:check
         working-directory: hospital-management/case-service
 
-
       - name: GitLeaks Scan
-        uses: zricethezav/gitleaks-action@v1.3.0
-
-      - name: OSS Scan
-        run: mvn ossindex:audit
-        continue-on-error: true
+        run: |
+          cd hospital-management/case-service
+          docker pull gayatri589/gitleaks
+          docker run -v "$(pwd):/scan" gayatri589/gitleaks
 
       - name: OWASP Scan
         if: false
