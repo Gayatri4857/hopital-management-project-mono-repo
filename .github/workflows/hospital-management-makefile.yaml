@@ -29,29 +29,36 @@ jobs:
       - name: Show Makefile
         run: cat hospital-management/makefile
 
-      - name: Execute git_status Target
-        run: make -C hospital-management git_status
+      - name: Run git_status
+        working-directory: hospital-management
+        run: make git_status
 
-      - name: Pull Updates from Git
-        run: make -C hospital-management git_pull
+      - name: Pull Latest Changes
+        working-directory: hospital-management
+        run: make git_pull
 
-      - name: Stash Local Modifications
-        run: make -C hospital-management git_stash
+      - name: Stash Changes
+        working-directory: hospital-management
+        run: make git_stash
 
-      - name: Compile Library
-        run: make -C hospital-management build_lib
+      - name: Build Library Project
+        working-directory: hospital-management
+        run: make build_lib
 
-      - name: Compile All Services
-        run: make -C hospital-management build_services
+      - name: Build Services
+        working-directory: hospital-management
+        run: make build_services
 
-      - name: Build Docker Containers
-        run: make -C hospital-management build_images
+      - name: Build Docker Images
+        working-directory: hospital-management
+        run: make build_images
 
-      - name: Authenticate Docker Registry
+      - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
           password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
-      - name: Push Docker Containers
-        run: make -C hospital-management push_images
+      - name: Push Docker Images
+        working-directory: hospital-management
+        run: make push_images
