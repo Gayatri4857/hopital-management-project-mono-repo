@@ -5,7 +5,7 @@ REPO := https://github.com/Gayatri4857/hospital-management-project-mono-repo.git
 
 # Main target 
 default: clone status pull stash build_lib build_services build_images push_images
-
+ 
 # Clone all services and the JavaFX library project
 clone:
 	@echo "Starting to clone services and the JavaFX library project..."
