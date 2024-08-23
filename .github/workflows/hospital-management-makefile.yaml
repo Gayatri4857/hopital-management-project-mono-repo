@@ -1,4 +1,4 @@
-name: CI for Hospital Management Project
+name: CI Pipeline for Hospital Management
 
 on:
   push:
@@ -6,50 +6,51 @@ on:
       - 'hospital-management/**'
 
 jobs:
-  build-deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Java Environment
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: 17
-          distribution: temurin
+          java-version: '17'
+          distribution: 'temurin'
 
-      - name: Install Dependencies
+      - name: Install Required Packages
         run: sudo apt-get update && sudo apt-get install -y make
 
-      - name: Validate Project Structure
-        run: ls -R
+      - name: Inspect Project Directory
+        run: ls -lR
         working-directory: hospital-management
 
-      - name: Show Makefile
-        run: cat hospital-management/Makefile
+      - name: Display Makefile
+        run: cat Makefile
+        working-directory: hospital-management
 
-      - name: Run Status
+      - name: Execute Git Status
         working-directory: hospital-management
         run: make status
 
-      - name: Pull Latest Changes
+      - name: Update Repositories
         working-directory: hospital-management
         run: make pull
 
-      - name: Stash Changes
+      - name: Save Local Modifications
         working-directory: hospital-management
         run: make stash
 
-      - name: Build Library Project
+      - name: Compile Library Module
         working-directory: hospital-management
         run: make build_lib
 
-      - name: Build Services
+      - name: Compile All Services
         working-directory: hospital-management
         run: make build_services
 
-      - name: Build Docker Images
+      - name: Create Docker Images
         working-directory: hospital-management
         run: make build_images
 
@@ -57,8 +58,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
-          password: ${{ secrets.DOCKER_REGISTRY_PAT }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASS }}
 
-      - name: Push Docker Images
+      - name: Upload Docker Images
         working-directory: hospital-management
         run: make push_images
