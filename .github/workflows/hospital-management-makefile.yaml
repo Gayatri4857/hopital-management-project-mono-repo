@@ -29,7 +29,7 @@ jobs:
       - name: Show Makefile
         run: cat hospital-management/Makefile
 
-      - name: Run status
+      - name: Run Status
         working-directory: hospital-management
         run: make status
 
