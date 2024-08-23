@@ -1,6 +1,6 @@
 # Use a base image with Java 11
 FROM gayatri589/open-jdk 
-    
+     
 WORKDIR /app
  
 # Copy the application JAR file
