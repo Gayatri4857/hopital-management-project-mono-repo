@@ -1,7 +1,7 @@
 # Variables
 SERVICES := api-gateway appointment-service case-service directory-service-hospital patient-service
 LIBRARY := hospital-management-console
-REPO := https://github.com/Gayatri4857/hopital-management-project-mono-repo.git
+REPO := https://github.com/Gayatri4857/hospital-management-project-mono-repo.git
 
 # Main target 
 default: clone status pull stash build_lib build_services build_images push_images
