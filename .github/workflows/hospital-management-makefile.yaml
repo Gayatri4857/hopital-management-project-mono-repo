@@ -27,19 +27,19 @@ jobs:
         working-directory: hospital-management
 
       - name: Show Makefile
-        run: cat hospital-management/makefile
+        run: cat hospital-management/Makefile
 
-      - name: Run git_status
+      - name: Run status
         working-directory: hospital-management
-        run: make git_status
+        run: make status
 
       - name: Pull Latest Changes
         working-directory: hospital-management
-        run: make git_pull
+        run: make pull
 
       - name: Stash Changes
         working-directory: hospital-management
-        run: make git_stash
+        run: make stash
 
       - name: Build Library Project
         working-directory: hospital-management
@@ -57,7 +57,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
-          password: ${{ secrets.DOCKER_REGISTRY_PASS }}
+          password: ${{ secrets.DOCKER_REGISTRY_PAT }}
 
       - name: Push Docker Images
         working-directory: hospital-management
