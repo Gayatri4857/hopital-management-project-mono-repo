@@ -1,6 +1,6 @@
 # Variables
 SERVICES := api-gateway appointment-service case-service directory-service-hospital patient-service
-LIBRARY := hospital-management-console
+LIBRARY := hospital-console-project
 REPO := https://github.com/Gayatri4857/hospital-management-project-mono-repo.git
 
 # Main target 
